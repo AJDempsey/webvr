@@ -3,7 +3,27 @@
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
   </head>
   <body>
+    <!--
+      Set up VR scene
+
+      This will contain every entity in the scene, handles all the 3D
+      (all the things that three.js deals with, canvas, camera, lights,
+      renderer, renderloop) quite a lot of heavy lifting!
+    -->
     <a-scene>
+    <!--
+      Adding objects
+
+      Objects can be added either using the base object <a-entity> and filling
+      in all the components ourself or by using the premitives that a-frame
+      provides. Things like <a-box>, <a-cylinder> etc.
+      See documentation:
+      primitives: https://github.com/aframevr/aframe/tree/master/docs/primitives
+      entity: https://github.com/aframevr/aframe/blob/master/docs/core/entity.md
+    -->
+    <a-box color="red"></a-box>
+    <a-entity id="test-box" geometry="primitive: box" material="color: red">
+    </a-entity>
     </a-scene>
   </body>
 </html>
