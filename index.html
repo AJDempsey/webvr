@@ -24,6 +24,30 @@
     <a-box color="red"></a-box>
     <a-entity id="test-box" geometry="primitive: box" material="color: red">
     </a-entity>
+
+    <!--
+      3D space in a-frame
+
+      Coordinate system for a-frame uses a right hand coordinate system.
+      + x-axis extends to the right (thumb)
+      + y-axis extends upwards (index)
+      + z-axis extends out of the screen (middle)
+      Distance is measured in meters (remember this when developing)
+      Rotation is measured in degrees (positive direction is found by
+        pointing the right thumb along the +ve axis and the finger curl
+        is the positive direction)
+      An entity is placed in the world using the position, rotation, and scale
+      components.
+
+      Without these components the position defaults to (0,0,0), given this the
+      above boxes exist at the same place as the default camera. To view the
+      boxes we need to either move around or move the boxes. We'll create a new
+      entity and display it where we can see from the start.
+    -->
+    <a-box position="0 2 -10" rotation="0 45 45" scale="2 4 2" color="blue">
+      <a-sphere position"1 0 3" color="black" material="wireframe: true"></a-sphere>
+    </a-box>
+    <!-- The above demonstrates inheretance of translations -->
     </a-scene>
   </body>
 </html>
