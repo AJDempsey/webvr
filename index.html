@@ -1,6 +1,7 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
   </head>
   <body>
     <!--
@@ -44,10 +45,12 @@
       boxes we need to either move around or move the boxes. We'll create a new
       entity and display it where we can see from the start.
     -->
-    <a-box position="0 2 -10" rotation="0 45 45" scale="2 4 2" color="blue">
+    <a-box position="0 0.90 -10" rotation="0 45 45" scale="2 4 2" color="blue">
       <a-sphere position"1 0 3" color="black" material="wireframe: true"></a-sphere>
     </a-box>
     <!-- The above demonstrates inheretance of translations -->
+
+    <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
     </a-scene>
   </body>
 </html>
