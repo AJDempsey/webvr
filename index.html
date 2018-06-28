@@ -49,21 +49,35 @@
         <a-sphere position"1 0 3" color="black" material="wireframe: true"></a-sphere>
       </a-box>
       <!-- The above demonstrates inheretance of translations -->
-	
+
       <!--
         Adding images as textures
-        
+
         It's possible to apply an image to an entity by using the src attribute.
         Any colour the entity has will get blended into the texture. Default colour is
         white so just removing the colour attribute is enough.
         This isn't the most performant, instead use the asset management system.
-        
+
       -->
       <a-box src="https://i.imgur.com/mYmmbrp.jpg" position="5 2 -5" rotation="0 -45 45"
         scale="2 2 2"></a-box>
-		
+
+      <!--
+        Asset management
+
+        While you can directly link to textures it's not recommended, instead
+        use asset management systems instead. This makes it easier for the
+        browser to cache assets, and a-frame will be able to fetch resources
+        before rendering.
+      -->
+      <a-assets>
+        <img src="https://i.imgur.com/mYmmbrp.jpg" id="testAsset">
+      </a-assets>
+
+      <a-box src="#testAsset" position="-5 2 -5" rotation="0 -45 45" scale="2 2 2">
+      </a-box>
+
       <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
-      <a-sky color="#222"></a-sky>
     </a-scene>
   </body>
 </html>
