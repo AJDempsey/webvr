@@ -74,7 +74,8 @@
         <img src="https://i.imgur.com/mYmmbrp.jpg" id="testAsset">
       </a-assets>
 
-      <a-box src="#testAsset" position="-5 2 -5" rotation="0 -45 45" scale="2 2 2">
+      <a-box id="assetBox" src="#testAsset" position="-5 2 -5"
+                                            rotation="0 -45 45" scale="2 2 2">
       </a-box>
 
       <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
@@ -114,6 +115,28 @@
         Combining these primitives and more will allow you to build your own
         environments. I'll stick with the prefab just now.
       -->
+
+      <!--
+        Annimations
+
+        We can add animations to an element by placing <a-animation> element
+        as a child.
+        Animations interpolate, or tween, a value over time.
+        Here the animation works on the position attribute, animating to -5 2.2 -5
+        (twenty cm higher) alternating the direction every cycle, with each cycles
+        duration lasting 2000ms and repeats forever.
+      -->
+      <a-animation id="bounceAnnimation" attributes="position"
+                                         to="-5 2.2 -5"
+                                         direction="alternate"
+                                         dur="2000"
+                                         repeat="indefinite">
+      </a-animation>
+      <!-- add to an existing box instead of cluttering up the scene.
+          bad practice? Probably.-->
+      <script>
+        document.getElementById("assetBox").appendChild(document.getElementById("bounceAnnimation"))
+      </script>
     </a-scene>
   </body>
 </html>
