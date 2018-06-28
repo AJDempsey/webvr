@@ -78,6 +78,42 @@
       </a-box>
 
       <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
+      <!--
+        Custom environments
+
+        Instead of importing an environment it's possible to build environments
+        from primitives, I wont replace the environment but I'lll add the code
+        to this comment.
+
+        The Sky
+        <a-sky color="#222"></a-sky>
+
+        This will set the background of the scene to a certain color. The sky
+        is the inside of a large sphere. It can also be set to a 360 video or
+        image (use an asset for this and the src attribute)
+
+        The Ground
+        <a-plane src="#groundAsset" rotation="-90 0 0 width="30" height="30"
+          repeat="10 10"></a-plane>
+
+        The ground is created using a plane. By default a plane is parallel to
+        the XY axis, rotate 90 degree in negative X axis to make it to parallel
+        to the XZ axis. Make it large using the width and height attributes and
+        repeat the texture (how many times in the X and Y direction)
+
+        Lighting
+        To create lighting use the <a-light> entity, there's multiple different
+        types of lights they match with the three.js lights.
+        By default a-frame provides ligthing for the scene (otherwise it would
+        be dark) when we add <a-light> to the scene a-frame removes the default
+        light sources.
+
+        <a-light type="ambient" color="#445457"></a-light>
+        <a-light type="point" intensity="2" position="2 4 4"></a-light>
+
+        Combining these primitives and more will allow you to build your own
+        environments. I'll stick with the prefab just now.
+      -->
     </a-scene>
   </body>
 </html>
