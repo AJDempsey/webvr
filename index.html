@@ -137,6 +137,20 @@
       <script>
         document.getElementById("assetBox").appendChild(document.getElementById("bounceAnnimation"))
       </script>
+
+      <!--
+        Cursor and Camera
+
+        To create interactions we can use a cursor on mobile and desktop.
+        This allows us to "click" on things in mobile using our gaze and using
+        the mouse on desktop.
+        To create a cursor attached to the camera we need to override the
+        default cursor that a-frame provides and add the cursor as a child of
+        the camera
+      -->
+      <a-camera>
+        <a-cursor color="white"></a-cursor>
+      </a-camera>
     </a-scene>
   </body>
 </html>
