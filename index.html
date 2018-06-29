@@ -60,7 +60,7 @@
 
       -->
       <a-box src="https://i.imgur.com/mYmmbrp.jpg" position="5 2 -5" rotation="0 -45 45"
-        scale="2 2 2"></a-box>
+        scale="2 2 2" id="fetchBox"></a-box>
 
       <!--
         Asset management
@@ -151,6 +151,57 @@
       <a-camera>
         <a-cursor color="white"></a-cursor>
       </a-camera>
+
+      <!--
+        Events and reacting to them
+
+        Scripting events is possible in two ways, either through javascript
+        or through the <a-animation> tag.
+        Using javascript is done in the same manner as any other DOM element
+        for good practice this should be wrapped in a new component and added
+        to the entity to provide context to the component.
+
+        <a-animation> has a feature to begin its animation when the entity it is
+        animating emits an event. this can be done thorugh the begin attribute
+        which takes the event name.
+      -->
+      <script>
+        AFRAME.registerComponent('scale-on-mouseenter',
+            { schema: {to: {default: "2.5 2.5 2.5"}},
+              init: function() {
+                var data = this.data;
+                this.el.addEventListener('mouseenter', function() {
+                  this.setAttribute('scale', data.to);
+                });
+              }
+            });
+        AFRAME.registerComponent('scale-on-mouseleave',
+            { schema: {to: {default: "2.5 2.5 2.5"}},
+              init: function() {
+                var data = this.data;
+                this.el.addEventListener('mouseleave', function() {
+                  this.setAttribute('scale', data.to);
+                });
+              }
+            });
+        document.getElementById("assetBox").setAttribute("scale-on-mouseenter",
+            "to: 2.2 2.2 2.2");
+        document.getElementById("assetBox").setAttribute("scale-on-mouseleave",
+            "to: 2 2 2");
+      </script>
+      <a-animation attribute="scale" begin="mouseenter" dur="300"
+                    to="2.3 2.3 2.3" id="scale-enter"></a-animation>
+      <a-animation attribute="scale" begin="mouseleave" dur="300"
+                    to="2 2 2" id="scale-leave"></a-animation>
+      <a-animation attribute="rotation" begin="click" dur="2000"
+                    to="360 405 45" id="rotate-clicker"></a-animation>
+      <script>
+        var node = document.getElementById("fetchBox");
+        node.appendChild(document.getElementById("scale-enter"));
+        node.appendChild(document.getElementById("scale-leave"));
+        node.appendChild(document.getElementById("rotate-clicker"));
+      </script>
+
     </a-scene>
   </body>
 </html>
