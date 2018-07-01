@@ -201,6 +201,17 @@
         node.appendChild(document.getElementById("scale-leave"));
         node.appendChild(document.getElementById("rotate-clicker"));
       </script>
+      
+      <!--
+        Sound
+        
+        Audio is increadibly important for VR, it should be high quality and
+        360 degree to complete the immersion.
+        There are two ways to do this using an <audio> asset or using <a-sound>
+        and placing it at a position in the scene so it gets louder as we get closer
+      -->
+      <a-sound src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"
+        audioplay="true" position="-3 1 -4"></a-sound>
 
     </a-scene>
   </body>
