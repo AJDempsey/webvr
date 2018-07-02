@@ -2,6 +2,7 @@
   <head>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="../Components/cursor-mouse-events.js"></script>
   </head>
   <body>
     <!--
@@ -166,24 +167,6 @@
         which takes the event name.
       -->
       <script>
-        AFRAME.registerComponent('scale-on-mouseenter',
-            { schema: {to: {default: "2.5 2.5 2.5"}},
-              init: function() {
-                var data = this.data;
-                this.el.addEventListener('mouseenter', function() {
-                  this.setAttribute('scale', data.to);
-                });
-              }
-            });
-        AFRAME.registerComponent('scale-on-mouseleave',
-            { schema: {to: {default: "2.5 2.5 2.5"}},
-              init: function() {
-                var data = this.data;
-                this.el.addEventListener('mouseleave', function() {
-                  this.setAttribute('scale', data.to);
-                });
-              }
-            });
         document.getElementById("assetBox").setAttribute("scale-on-mouseenter",
             "to: 2.2 2.2 2.2");
         document.getElementById("assetBox").setAttribute("scale-on-mouseleave",
