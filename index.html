@@ -8,12 +8,16 @@
     <a-scene>
       <a-assets>
         <img id="groundTexture" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous">
-        <img id="vapourSky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
+        <img id="vapourSky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous">
+        <img id="hello-aframe" src="Assets/Images/hello-aframe.jpg"/>
         <!-- This model used under CC-BY license from poly google https://poly.google.com/view/duhtFXbJCfc -->
         <a-gltf-model id="board" src="./Assets/Models/Blackboard_01.gltf"></a-asset-item>
       </a-assets>
       <a-camera look-controls wasd-controls>
         <a-cursor color="cyan" position="0 0 -0.5">
+          <a-animation begin="click" easing="ease-in" attribute="scale"
+                 dur="150" fill="forward" from="0.1 0.1 0.1" to="1 1 1">
+          </a-animation>
         </a-cursor>
       </a-camera>
       <a-plane src="#groundTexture" rotation="-90 0 0" width="10000" height="10000"
@@ -22,14 +26,16 @@
       <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
       <a-entity light="color: white; type: ambient;"></a-entity>
       <a-entity gltf-model="#board" scale="0.2 0.2 0.2" position="0 1 -5">
-        <a-entity id="test" link="href: Tutorials\index.html; title: VR Tutorials;
+        <a-entity id="test" link="href: Tutorials\index.html; image: #hello-aframe;
+            peek: true; title: VR Tutorials;
             borderColor: black; titleColor: black; highlightedColor: blue;"
             position="0 2.5 0.1" scale="1.5 1.5 1.5"
             scale-on-mouseenter="to: 2 2 2"
-            scale-on-mouseleave="to: 1.5 1.5 1.5"></a-entity>
+            scale-on-mouseleave="to: 1.5 1.5 1.5">
+        </a-entity>
       </a-entity>
 
-      <a-sky src="#vapourSky" rotation="0 -90 0"></a-sky>
+      <a-sky id="sky" src="#vapourSky" rotation="0 -90 0"></a-sky>
     </a-scene>
   </body>
 </html>

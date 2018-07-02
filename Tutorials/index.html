@@ -1,5 +1,6 @@
 <html>
   <head>
+    <img id="toplevelIndex" src="../Assets/Images/toplevel-index.jpg">
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="../Components/cursor-mouse-events.js"></script>
@@ -150,7 +151,11 @@
         the camera
       -->
       <a-camera>
-        <a-cursor color="white"></a-cursor>
+        <a-cursor color="cyan" position="0 0 -0.5">
+          <a-animation begin="click" easing="ease-in" attribute="scale"
+                 dur="150" fill="forwards" from="0.1 0.1 0.1" to="1 1 1">
+          </a-animation>
+        </a-cursor>
       </a-camera>
 
       <!--
@@ -206,6 +211,15 @@
       <a-text value="Hello, A-Frame!" color="#BBB" position="-0.9 0.2 -3"
         scale="1.5 1.5 1.5"></a-text>
 
+      <a-entity link="href: ../index.html; image: #toplevelIndex;
+          peek: true; title: WebVR Home;
+          borderColor: white; titleColor: white;"
+          position="0 2 5" scale="1.5 1.5 1.5"
+          scale-on-mouseenter="to: 2 2 2"
+          scale-on-mouseleave="to: 1.5 1.5 1.5">
+      </a-entity>
+
     </a-scene>
   </body>
 </html>
+
