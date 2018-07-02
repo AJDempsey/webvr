@@ -1,228 +1,36 @@
 <html>
   <head>
-    <img id="toplevelIndex" src="../Assets/Images/toplevel-index.jpg">
+    <title>Index page for web VR Tutorials</title>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="../Components/cursor-mouse-events.js"></script>
   </head>
   <body>
-    <!--
-      Set up VR scene
-
-      This will contain every entity in the scene, handles all the 3D
-      (all the things that three.js deals with, canvas, camera, lights,
-      renderer, renderloop) quite a lot of heavy lifting!
-    -->
     <a-scene>
-      <!--
-        Adding objects
-
-        Objects can be added either using the base object <a-entity> and filling
-        in all the components ourself or by using the premitives that a-frame
-        provides. Things like <a-box>, <a-cylinder> etc.
-        See documentation:
-        primitives: https://github.com/aframevr/aframe/tree/master/docs/primitives
-        entity: https://github.com/aframevr/aframe/blob/master/docs/core/entity.md
-      -->
-      <a-box color="red"></a-box>
-      <a-entity id="test-box" geometry="primitive: box" material="color: red">
-      </a-entity>
-
-      <!--
-        3D space in a-frame
-
-        Coordinate system for a-frame uses a right hand coordinate system.
-        + x-axis extends to the right (thumb)
-        + y-axis extends upwards (index)
-        + z-axis extends out of the screen (middle)
-        Distance is measured in meters (remember this when developing)
-        Rotation is measured in degrees (positive direction is found by
-          pointing the right thumb along the +ve axis and the finger curl
-          is the positive direction)
-        An entity is placed in the world using the position, rotation, and scale
-        components.
-
-        Without these components the position defaults to (0,0,0), given this the
-        above boxes exist at the same place as the default camera. To view the
-        boxes we need to either move around or move the boxes. We'll create a new
-        entity and display it where we can see from the start.
-      -->
-      <a-box position="0 0.90 -10" rotation="0 45 45" scale="2 4 2" color="blue">
-        <a-sphere position"1 0 3" color="black" material="wireframe: true"></a-sphere>
-      </a-box>
-      <!-- The above demonstrates inheretance of translations -->
-
-      <!--
-        Adding images as textures
-
-        It's possible to apply an image to an entity by using the src attribute.
-        Any colour the entity has will get blended into the texture. Default colour is
-        white so just removing the colour attribute is enough.
-        This isn't the most performant, instead use the asset management system.
-
-      -->
-      <a-box src="https://i.imgur.com/mYmmbrp.jpg" position="5 2 -5" rotation="0 -45 45"
-        scale="2 2 2" id="fetchBox"></a-box>
-
-      <!--
-        Asset management
-
-        While you can directly link to textures it's not recommended, instead
-        use asset management systems instead. This makes it easier for the
-        browser to cache assets, and a-frame will be able to fetch resources
-        before rendering.
-      -->
       <a-assets>
-        <img src="https://i.imgur.com/mYmmbrp.jpg" id="testAsset">
+        <img id="hello-aframe" src="../Assets/Images/hello-aframe.jpg"/>
+        <img id="toplevelIndex" src="../Assets/Images/toplevel-index.jpg">
       </a-assets>
-
-      <a-box id="assetBox" src="#testAsset" position="-5 2 -5"
-                                            rotation="0 -45 45" scale="2 2 2">
-      </a-box>
-
-      <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
-      <!--
-        Custom environments
-
-        Instead of importing an environment it's possible to build environments
-        from primitives, I wont replace the environment but I'lll add the code
-        to this comment.
-
-        The Sky
-        <a-sky color="#222"></a-sky>
-
-        This will set the background of the scene to a certain color. The sky
-        is the inside of a large sphere. It can also be set to a 360 video or
-        image (use an asset for this and the src attribute)
-
-        The Ground
-        <a-plane src="#groundAsset" rotation="-90 0 0 width="30" height="30"
-          repeat="10 10"></a-plane>
-
-        The ground is created using a plane. By default a plane is parallel to
-        the XY axis, rotate 90 degree in negative X axis to make it to parallel
-        to the XZ axis. Make it large using the width and height attributes and
-        repeat the texture (how many times in the X and Y direction)
-
-        Lighting
-        To create lighting use the <a-light> entity, there's multiple different
-        types of lights they match with the three.js lights.
-        By default a-frame provides ligthing for the scene (otherwise it would
-        be dark) when we add <a-light> to the scene a-frame removes the default
-        light sources.
-
-        <a-light type="ambient" color="#445457"></a-light>
-        <a-light type="point" intensity="2" position="2 4 4"></a-light>
-
-        Combining these primitives and more will allow you to build your own
-        environments. I'll stick with the prefab just now.
-      -->
-
-      <!--
-        Annimations
-
-        We can add animations to an element by placing <a-animation> element
-        as a child.
-        Animations interpolate, or tween, a value over time.
-        Here the animation works on the position attribute, animating to -5 2.2 -5
-        (twenty cm higher) alternating the direction every cycle, with each cycles
-        duration lasting 2000ms and repeats forever.
-      -->
-      <a-animation id="bounceAnnimation" attributes="position"
-                                         to="-5 2.2 -5"
-                                         direction="alternate"
-                                         dur="2000"
-                                         repeat="indefinite">
-      </a-animation>
-      <!-- add to an existing box instead of cluttering up the scene.
-          bad practice? Probably.-->
-      <script>
-        document.getElementById("assetBox").appendChild(document.getElementById("bounceAnnimation"))
-      </script>
-
-      <!--
-        Cursor and Camera
-
-        To create interactions we can use a cursor on mobile and desktop.
-        This allows us to "click" on things in mobile using our gaze and using
-        the mouse on desktop.
-        To create a cursor attached to the camera we need to override the
-        default cursor that a-frame provides and add the cursor as a child of
-        the camera
-      -->
       <a-camera look-controls wasd-controls>
         <a-cursor color="cyan" position="0 0 -0.5">
           <a-animation begin="click" easing="ease-in" attribute="scale"
-                 dur="150" fill="forwards" from="0.1 0.1 0.1" to="1 1 1">
+                 dur="150" fill="forward" from="0.1 0.1 0.1" to="1 1 1">
           </a-animation>
         </a-cursor>
       </a-camera>
-
-      <!--
-        Events and reacting to them
-
-        Scripting events is possible in two ways, either through javascript
-        or through the <a-animation> tag.
-        Using javascript is done in the same manner as any other DOM element
-        for good practice this should be wrapped in a new component and added
-        to the entity to provide context to the component.
-
-        <a-animation> has a feature to begin its animation when the entity it is
-        animating emits an event. this can be done thorugh the begin attribute
-        which takes the event name.
-      -->
-      <script>
-        document.getElementById("assetBox").setAttribute("scale-on-hover",
-            "to: 2.2 2.2 2.2");
-      </script>
-      <a-animation attribute="scale" begin="mouseenter" dur="300"
-                    to="2.3 2.3 2.3" id="scale-enter"></a-animation>
-      <a-animation attribute="scale" begin="mouseleave" dur="300"
-                    to="2 2 2" id="scale-leave"></a-animation>
-      <a-animation attribute="rotation" begin="click" dur="2000"
-                    to="360 405 45" id="rotate-clicker"></a-animation>
-      <script>
-        var node = document.getElementById("fetchBox");
-        node.appendChild(document.getElementById("scale-enter"));
-        node.appendChild(document.getElementById("scale-leave"));
-        node.appendChild(document.getElementById("rotate-clicker"));
-      </script>
-
-      <!--
-        Sound
-
-        Audio is increadibly important for VR, it should be high quality and
-        360 degree to complete the immersion.
-        There are two ways to do this using an <audio> asset or using <a-sound>
-        and placing it at a position in the scene so it gets louder as we get closer
-      -->
-      <a-sound src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"
-        audioplay="true" position="-3 1 -4"></a-sound>
-
-      <!--
-        Text
-
-        A-Frame comes with a text component. There are several ways to render text,
-        each with their advantages and disadvantages. The in built A-Frame text
-        component is sharp and performant enough for our use here.
-      -->
-      <a-text value="Hello, A-Frame!" color="#BBB" position="-0.9 0.2 -3"
-        scale="1.5 1.5 1.5"></a-text>
-
-      <!--
-        Links
-
-        Add portal link back to the toplevel index file.
-        Add a hover over section so user knows they can select the portal.
-        Need to work on how to transition better.
-      -->
-      <a-entity link="href: ../index.html; image: #toplevelIndex;
-          peek: true; title: WebVR Home;
+      <a-entity id="test" link="href: basic_scene.html; image: #hello-aframe;
+          peek: true; title: Basic Scene;
           borderColor: white; titleColor: white;"
-          position="0 2 5" scale="1.5 1.5 1.5"
-          scale-on-hover="to: 2 2 2;">
+          position="0 2 -5" scale="1.5 1.5 1.5"
+          scale-on-hover="to: 2 2 2">
       </a-entity>
-
+      <a-entity id="test" link="href: ..\index.html; image: #toplevelIndex;
+          peek: true; title: VR Home;
+          borderColor: white; titleColor: white;"
+          position="0 2.5 5" scale="1.5 1.5 1.5"
+          scale-on-hover="to: 2 2 2">
+      </a-entity>
+      <a-entity environment="preset: tron; dressingAmount: 100"></a-entity>
     </a-scene>
   </body>
 </html>
