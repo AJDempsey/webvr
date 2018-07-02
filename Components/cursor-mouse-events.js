@@ -1,19 +1,15 @@
-AFRAME.registerComponent('scale-on-mouseenter',
+AFRAME.registerComponent('scale-on-hover',
     { schema: {to: {default: "2.5 2.5 2.5"}},
       init: function() {
         var data = this.data;
-        this.el.addEventListener('mouseenter', function() {
-          this.setAttribute('scale', data.to);
+        var el = this.el;
+        var cScale = el.getAttribute("scale");
+        var strScale = cScale["x"]+" "+cScale["y"]+" "+cScale["z"];
+        el.addEventListener('mouseenter', function() {
+          el.setAttribute('scale', data.to);
+        });
+        el.addEventListener('mouseleave', function() {
+          el.setAttribute('scale', strScale);
         });
       }
     });
-AFRAME.registerComponent('scale-on-mouseleave',
-    { schema: {to: {default: "2.5 2.5 2.5"}},
-      init: function() {
-        var data = this.data;
-        this.el.addEventListener('mouseleave', function() {
-          this.setAttribute('scale', data.to);
-        });
-      }
-    });
-
