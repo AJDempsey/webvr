@@ -150,7 +150,7 @@
         default cursor that a-frame provides and add the cursor as a child of
         the camera
       -->
-      <a-camera>
+      <a-camera look-controls wasd-controls>
         <a-cursor color="cyan" position="0 0 -0.5">
           <a-animation begin="click" easing="ease-in" attribute="scale"
                  dur="150" fill="forwards" from="0.1 0.1 0.1" to="1 1 1">
@@ -209,6 +209,13 @@
       <a-text value="Hello, A-Frame!" color="#BBB" position="-0.9 0.2 -3"
         scale="1.5 1.5 1.5"></a-text>
 
+      <!--
+        Links
+
+        Add portal link back to the toplevel index file.
+        Add a hover over section so user knows they can select the portal.
+        Need to work on how to transition better.
+      -->
       <a-entity link="href: ../index.html; image: #toplevelIndex;
           peek: true; title: WebVR Home;
           borderColor: white; titleColor: white;"
