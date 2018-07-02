@@ -2,6 +2,32 @@
   <head>
     <title>Index page for web VR experiments</title>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent('highlight-on-mouseenter',
+          {schema: {},
+           init: function () {
+             var data = this.data;
+             this.el.addEventListener('mouseenter',
+                 function() {
+                    var link = this.getAttribute('link');
+                    link["highlighted"] = true;
+                    this.setAttribute('link', link);
+                 });
+           }
+        });
+      AFRAME.registerComponent('highlight-on-mouseleave',
+          {schema: {},
+           init: function () {
+             var data = this.data;
+             this.el.addEventListener('mouseleave',
+                 function() {
+                    var link = this.getAttribute('link');
+                    link["highlighted"] = false;
+                    this.setAttribute('link', link);
+                 });
+           }
+        });
+    </script>
   </head>
   <body>
     <a-scene>
@@ -11,18 +37,25 @@
         <!-- This model used under CC-BY license from poly google https://poly.google.com/view/duhtFXbJCfc -->
         <a-gltf-model id="board" src="./Assets/Models/Blackboard_01.gltf"></a-asset-item>
       </a-assets>
+      <a-camera look-controls wasd-controls>
+        <a-cursor color="cyan" position="0 0 -0.5">
+        </a-cursor>
+      </a-camera>
       <a-plane src="#groundTexture" rotation="-90 0 0" width="10000" height="10000"
         repeat="10000 10000" transparent="true" metalness="0.6" roughness="0.4" sphericalEnvMap="#vapourSky"></a-plane>
-      
+
       <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
       <a-entity light="color: white; type: ambient;"></a-entity>
-      
       <a-entity gltf-model="#board" scale="0.2 0.2 0.2" position="0 1 -5">
-        <a-link href="Tutorials\index.html" title="VR Tutorials" position="0 2.5 0.1" scale="1.5 1.5 1.5" bordercolor="Black"
-          titlecolor="Black"></a-link>
+        <a-entity id="test" link="href: Tutorials\index.html; title: VR Tutorials;
+            borderColor: black; titleColor: black; highlightedColor: blue;"
+            position="0 2.5 0.1" scale="1.5 1.5 1.5"
+            highlight-on-mouseenter
+            highlight-on-mouseleave></a-entity>
       </a-entity>
-        
+
       <a-sky src="#vapourSky" rotation="0 -90 0"></a-sky>
     </a-scene>
   </body>
 </html>
+
