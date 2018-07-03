@@ -4,7 +4,7 @@ AFRAME.registerComponent('scale-on-hover',
         var data = this.data;
         var el = this.el;
         var cScale = el.getAttribute("scale");
-        var strScale = cScale["x"]+" "+cScale["y"]+" "+cScale["z"];
+        var strScale = AFRAME.utils.coordinates.stringify(cScale);
         el.addEventListener('mouseenter', function() {
           el.setAttribute('scale', data.to);
         });
