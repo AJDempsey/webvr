@@ -2,6 +2,7 @@
   <head>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
     <script src="../Components/cursor-mouse-events.js"></script>
   </head>
   <body>
@@ -129,12 +130,10 @@
         (twenty cm higher) alternating the direction every cycle, with each cycles
         duration lasting 2000ms and repeats forever.
       -->
-      <a-animation id="bounceAnnimation" attributes="position"
-                                         to="-5 2.2 -5"
-                                         direction="alternate"
-                                         dur="2000"
-                                         repeat="indefinite">
-      </a-animation>
+      <a-entity id="bounceAnnimation"
+                animation="property: position; to: -5 2.2 -5; dir: alternate;
+                dur: 2000; loop: true;">
+      </a-entity>
       <!-- add to an existing box instead of cluttering up the scene.
           bad practice? Probably.-->
       <script>
@@ -152,10 +151,9 @@
         the camera
       -->
       <a-camera look-controls wasd-controls>
-        <a-cursor color="cyan" position="0 0 -0.5">
-          <a-animation begin="click" easing="ease-in" attribute="scale"
-                 dur="150" fill="forwards" from="0.1 0.1 0.1" to="1 1 1">
-          </a-animation>
+        <a-cursor color="cyan" position="0 0 -0.5"
+                    animation="property: scale; startEvents: click;
+                      dur: 150; from: 0.1 0.1 0.1; to: 1 1 1; ">
         </a-cursor>
       </a-camera>
 
@@ -176,12 +174,12 @@
         document.getElementById("assetBox").setAttribute("scale-on-hover",
             "to: 2.2 2.2 2.2");
       </script>
-      <a-animation attribute="scale" begin="mouseenter" dur="300"
-                    to="2.3 2.3 2.3" id="scale-enter"></a-animation>
-      <a-animation attribute="scale" begin="mouseleave" dur="300"
-                    to="2 2 2" id="scale-leave"></a-animation>
-      <a-animation attribute="rotation" begin="click" dur="2000"
-                    to="360 405 45" id="rotate-clicker"></a-animation>
+      <a-entity animation="property: scale; startEvents: mouseenter;
+                  dur:300; to: 2.3 2.3 2.3;" id="scale-enter"></a-entity>
+      <a-entity animation="property: scale; startEvents=mouseleave; dur: 300;
+                          to: 2 2 2;" id="scale-leave"></a-entity>
+      <a-entity animation="property: rotation; startEvents: click; dur:2000;
+                    to: 360 405 45;" id="rotate-clicker"></a-animation>
       <script>
         var node = document.getElementById("fetchBox");
         node.appendChild(document.getElementById("scale-enter"));

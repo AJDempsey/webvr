@@ -2,6 +2,7 @@
   <head>
     <title>Index page for web VR experiments</title>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
     <script src="Components/cursor-mouse-events.js"></script>
   </head>
   <body>
@@ -14,10 +15,9 @@
         <a-gltf-model id="board" src="./Assets/Models/Blackboard_01.gltf"></a-asset-item>
       </a-assets>
       <a-camera look-controls wasd-controls>
-        <a-cursor color="cyan" position="0 0 -0.5">
-          <a-animation begin="click" easing="ease-in" attribute="scale"
-                 dur="150" fill="forward" from="0.1 0.1 0.1" to="1 1 1">
-          </a-animation>
+        <a-cursor color="cyan" position="0 0 -0.5"
+                  animation__scale="property: scale; from: 0.1 0.1 0.1;
+                  to: 1 1 1; startEvents: click; dur: 150;">
         </a-cursor>
       </a-camera>
       <a-plane src="#groundTexture" rotation="-90 0 0" width="10000" height="10000"

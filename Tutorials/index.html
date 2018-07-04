@@ -3,6 +3,7 @@
     <title>Index page for web VR Tutorials</title>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.org/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
     <script src="../Components/cursor-mouse-events.js"></script>
   </head>
   <body>
@@ -12,10 +13,9 @@
         <img id="toplevelIndex" src="../Assets/Images/toplevel-index.jpg">
       </a-assets>
       <a-camera look-controls wasd-controls>
-        <a-cursor color="cyan" position="0 0 -0.5">
-          <a-animation begin="click" easing="ease-in" attribute="scale"
-                 dur="150" fill="forward" from="0.1 0.1 0.1" to="1 1 1">
-          </a-animation>
+        <a-cursor color="cyan" position="0 0 -0.5"
+            animation="startEvents: click; property: scale; dur: 150;
+                    from:0.1 0.1 0.1;to: 1 1 1;">
         </a-cursor>
       </a-camera>
       <a-entity id="test" link="href: basic_scene.html; image: #hello-aframe;
