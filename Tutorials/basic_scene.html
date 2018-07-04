@@ -1,5 +1,6 @@
 <html>
   <head>
+    <title>Basic a-frame scene</title>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
@@ -129,15 +130,17 @@
         Here the animation works on the position attribute, animating to -5 2.2 -5
         (twenty cm higher) alternating the direction every cycle, with each cycles
         duration lasting 2000ms and repeats forever.
-      -->
+
       <a-entity id="bounceAnnimation"
                 animation="property: position; to: -5 2.2 -5; dir: alternate;
                 dur: 2000; loop: true;">
       </a-entity>
+      -->
       <!-- add to an existing box instead of cluttering up the scene.
           bad practice? Probably.-->
       <script>
-        document.getElementById("assetBox").appendChild(document.getElementById("bounceAnnimation"))
+        var node = document.getElementById("assetBox");
+        node.setAttribute("animation", {property: "position", to: "-5 2.2 -5", dir: "alternate", dur: "2000", loop: "true"});
       </script>
 
       <!--
@@ -174,17 +177,19 @@
         document.getElementById("assetBox").setAttribute("scale-on-hover",
             "to: 2.2 2.2 2.2");
       </script>
+      <!--
       <a-entity animation="property: scale; startEvents: mouseenter;
                   dur:300; to: 2.3 2.3 2.3;" id="scale-enter"></a-entity>
-      <a-entity animation="property: scale; startEvents=mouseleave; dur: 300;
+      <a-entity animation="property: scale; startEvents: mouseleave; dur: 300;
                           to: 2 2 2;" id="scale-leave"></a-entity>
-      <a-entity animation="property: rotation; startEvents: click; dur:2000;
-                    to: 360 405 45;" id="rotate-clicker"></a-animation>
+      <a-entity animation="property: rotation; startEvents: click; dur: 2000;
+                    to: 360 405 45;" id="rotate-clicker"></a-entity>
+      -->
       <script>
         var node = document.getElementById("fetchBox");
-        node.appendChild(document.getElementById("scale-enter"));
-        node.appendChild(document.getElementById("scale-leave"));
-        node.appendChild(document.getElementById("rotate-clicker"));
+        node.setAttribute("animation__scale-enter", {property: "scale", startEvents: "mouseenter", dur: "300", to: "2.3 2.3 2.3"});
+        node.setAttribute("animation__scale-leave", {property: "scale", startEvents: "mouseleave", dur: "300", to: "2 2 2"});
+        node.setAttribute("animation__rotate-clicker", {property: "rotation", startEvents: "click", dur: "2000", dir: "alternate", from: "0 -45 45", to: "360 -405 45"});
       </script>
 
       <!--
