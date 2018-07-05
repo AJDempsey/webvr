@@ -5,6 +5,7 @@
     <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
     <script src="Components/cursor-mouse-events.js"></script>
     <script src="Primitives/hover-link.js"></script>
+    <script src="Primitives/gaze-clicker.js"></script>
   </head>
   <body>
     <a-scene>
@@ -16,10 +17,7 @@
         <a-gltf-model id="board" src="./Assets/Models/Blackboard_01.gltf"></a-asset-item>
       </a-assets>
       <a-camera look-controls wasd-controls>
-        <a-cursor color="cyan" position="0 0 -0.5"
-                  animation__scale="property: scale; from: 0.1 0.1 0.1;
-                  to: 1 1 1; startEvents: click; dur: 150;">
-        </a-cursor>
+        <a-clicker></a-clicker>
       </a-camera>
       <a-plane src="#groundTexture" rotation="-90 0 0" width="10000" height="10000"
         repeat="10000 10000" transparent="true" metalness="0.6" roughness="0.4" sphericalEnvMap="#vapourSky"></a-plane>

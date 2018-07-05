@@ -6,6 +6,7 @@
     <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
     <script src="../Components/cursor-mouse-events.js"></script>
     <script src="../Primitives/hover-link.js"></script>
+    <script src="../Primitives/gaze-clicker.js"></script>
   </head>
   <body>
     <a-scene>
@@ -14,10 +15,7 @@
         <img id="toplevelIndex" src="../Assets/Images/toplevel-index.jpg">
       </a-assets>
       <a-camera look-controls wasd-controls>
-        <a-cursor color="cyan" position="0 0 -0.5"
-                  animation__scale="property: scale; from: 0.1 0.1 0.1;
-                  to: 1 1 1; startEvents: click; dur: 150;">
-        </a-cursor>
+        <a-clicker></a-clicker>
       </a-camera>
       <a-entity position="0 2 -5" scale="1.5 1.5 1.5">
         <a-hover-link href="basic_scene.html" image="#hello-aframe"
