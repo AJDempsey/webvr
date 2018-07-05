@@ -5,6 +5,7 @@
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
     <script src="../Components/cursor-mouse-events.js"></script>
+    <script src="../Primitives/hover-link.js"></script>
   </head>
   <body>
     <!--
@@ -220,19 +221,17 @@
         Add a hover over section so user knows they can select the portal.
         Need to work on how to transition better.
       -->
-      <a-entity link="href: ../index.html; image: #toplevelIndex;
-          peekMode: true; title: WebVR Home;
-          borderColor: white; titleColor: white;"
-          position="-3 2 5" scale="1.5 1.5 1.5"
-          rotation="0 -30 0"
-          scale-on-hover="to: 2 2 2;">
+      <a-entity position="-3 2 5" scale="1.5 1.5 1.5" rotation="0 -30 0">
+        <a-hover-link href="../index.html" image="#toplevelIndex"
+                      title="WebVR Home" bordercolor="white"
+                      titlecolor="white" to="1.3 1.3 1.3">
+        </a-hover-link>
       </a-entity>
-      <a-entity link="href: index.html; image: #tutorialIndex;
-          peekMode: true; title: WebVR Tutorials;
-          borderColor: white; titleColor: white;"
-          position="3 2 5" scale="1.5 1.5 1.5"
-          rotation="0 30 0"
-          scale-on-hover="to: 2 2 2;">
+      <a-entity position="3 2 5" scale="1.5 1.5 1.5" rotation="0 30 0">
+        <a-hover-link href="index.html" image="#tutorialIndex"
+                      title="WebVR Tutorials" bordercolor="white"
+                      titlecolor="white" to="1.3 1.3 1.3">
+        </a-hover-link>
       </a-entity>
 
     </a-scene>

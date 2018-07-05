@@ -5,6 +5,7 @@
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="https://unpkg.org/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
     <script src="../Components/cursor-mouse-events.js"></script>
+    <script src="../Primitives/hover-link.js"></script>
   </head>
   <body>
     <a-scene>
@@ -18,17 +19,17 @@
                     from:0.1 0.1 0.1;to: 1 1 1;">
         </a-cursor>
       </a-camera>
-      <a-entity id="test" link="href: basic_scene.html; image: #hello-aframe;
-          peekMode: true; title: Basic Scene;
-          borderColor: white; titleColor: white;"
-          position="0 2 -5" scale="1.5 1.5 1.5"
-          scale-on-hover="to: 2 2 2">
+      <a-entity position="0 2 -5" scale="1.5 1.5 1.5">
+        <a-hover-link href="basic_scene.html" image="#hello-aframe"
+                      title="Basic Scene" bordercolor="white"
+                      titlecolor="white" to="1.3 1.3 1.3">
+        </a-hover-link>
       </a-entity>
-      <a-entity id="test" link="href: ..\index.html; image: #toplevelIndex;
-          peekMode: true; title: VR Home;
-          borderColor: white; titleColor: white;"
-          position="0 2.5 5" scale="1.5 1.5 1.5"
-          scale-on-hover="to: 2 2 2">
+      <a-entity position="0 2.5 5" scale="1.5 1.5 1.5">
+        <a-hover-link href="..\index.html" image="#toplevelIndex"
+                      title="WebVR Home" bordercolor="white"
+                      titlecolor="white" to="1.3 1.3 1.3">
+        </a-hover-link>
       </a-entity>
       <a-entity environment="preset: tron; dressingAmount: 100"></a-entity>
     </a-scene>
