@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Index page for web VR Experiments</title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
+    <script src="../Components/cursor-mouse-events.js"></script>
+    <script src="../Primitives/hover-link.js"></script>
+    <script src="../Primitives/gaze-clicker.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="toplevelIndex" src="../Assets/Images/toplevel-index.jpg">
+      </a-assets>
+      
+      <!-- Boilerplate setup HTML -->
+      <a-camera look-controls wasd-controls>
+        <a-clicker></a-clicker>
+      </a-camera>
+      <a-entity position="0 2.5 5" scale="1.5 1.5 1.5">
+        <a-hover-link href="..\index.html" image="#toplevelIndex"
+                      title="WebVR Home" bordercolor="white"
+                      titlecolor="white" to="1.3 1.3 1.3">
+        </a-hover-link>
+      </a-entity>
+      <a-entity environment="preset: dream; dressingAmount: 100"></a-entity>
+      
+      <!-- Experiments code -->
+      <a-sphere color="#0F0" scale="0.5 0.5 0.5" position="2.5 2.5 -5"
+                animation__colorin="property: material.color; startEvents: mouseenter; dur: 1000;
+                                easing: easeInSine; from: #0F0; to: #00F"
+                animation__colorout="property: material.color; startEvents: mouseleave; dur: 1000;
+                                easing: easeInSine; from: #00F; to: #0F0">>
+      </a-sphere>
+    </a-scene>
+  </body>
+</html>
+

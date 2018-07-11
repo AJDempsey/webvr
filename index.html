@@ -13,18 +13,21 @@
         <img id="groundTexture" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous">
         <img id="vapourSky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous">
         <img id="tutorialIndex" src="../Assets/Images/tutorial-index.jpg">
+        <img id="experimentIndex" src="../Assets/Images/experiments-index.png">
         <!-- This model used under CC-BY license from poly google https://poly.google.com/view/duhtFXbJCfc -->
-        <a-gltf-model id="board" src="./Assets/Models/Blackboard_01.gltf"></a-asset-item>
+        <a-asset-item id="board" src="./Assets/Models/Blackboard_01.gltf"></a-asset-item>
+        <!-- This model used under CC-BY license from poly google https://poly.google.com/view/advGpqPqy0P -->
+        <a-asset-item id="beaker" src='./Assets/Models/Beaker_01.gltf'></a-asset-item>
       </a-assets>
       <a-camera look-controls wasd-controls>
         <a-clicker></a-clicker>
       </a-camera>
       <a-plane src="#groundTexture" rotation="-90 0 0" width="10000" height="10000"
-        repeat="10000 10000" transparent="true" metalness="0.6" roughness="0.4" sphericalEnvMap="#vapourSky"></a-plane>
+        repeat="10000 10000" transparent="true" metalness="0.6" roughness="0.4" sphericalEnvMap="#vapourSky"></a-plane>      
 
       <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
       <a-entity light="color: white; type: ambient;"></a-entity>
-      <a-entity gltf-model="#board" scale="0.2 0.2 0.2" position="0 1 -5">
+      <a-entity gltf-model="#board" scale="0.2 0.2 0.2" position="-2 1 -3">
         <a-entity position="0 2.5 0.1" scale="1.5 1.5 1.5">
           <a-hover-link href="Tutorials\index.html" image="#tutorialIndex"
                       title="VR Tutorials" bordercolor="white"
@@ -32,7 +35,16 @@
           </a-hover-link>
         </a-entity>
       </a-entity>
-
+      
+      <a-entity gltf-model="#beaker" scale="0.1 0.1 0.1" position="2 1 -3" rotation="0 -200 0">
+        <a-entity position="-1 6 -5" scale="2.5 2.5 2.5" rotation="0 180 0">
+          <a-hover-link href="Experiments\index.html" image="#experimentIndex"
+                      title="VR Experiments" bordercolor="white"
+                      titlecolor="black" to="1.3 1.3 1.3">
+          </a-hover-link>
+        </a-entity>
+      </a-entity>
+      
       <a-sky id="sky" src="#vapourSky" rotation="0 -90 0"></a-sky>
     </a-scene>
   </body>
