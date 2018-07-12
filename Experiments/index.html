@@ -5,59 +5,35 @@
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
     <script src="../Components/cursor-mouse-events.js"></script>
+    <script src="../Components/mial-ux.js"></script>
     <script src="../Primitives/hover-link.js"></script>
     <script src="../Primitives/gaze-clicker.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene mike-alger-ux-zones>
       <a-assets>
         <img id="toplevelIndex" src="../Assets/Images/toplevel-index.jpg">
       </a-assets>
 
       <!-- Boilerplate setup HTML -->
-      <a-camera look-controls wasd-controls>
+      <a-entity id="povCamera" position="0 1.60 0" camera look-controls wasd-controls>
         <a-entity rotation="-20 55 0"
-                  line="start: 0 0 0; end:  0 0 -30; color: black;"></a-entity>
+                  line="start: 0 0 -2; end:  0 0 -30; color: black;"></a-entity>
         <a-entity rotation="-20 -55 0"
-                  line="start: 0 0 0; end:  0 0 -30; color: black;"></a-entity>
+                  line="start: 0 0 -2; end:  0 0 -30; color: black;"></a-entity>
         <a-entity rotation="-12 30 0"
-                  line="start: 0 0 0; end: 0 0 -30; color: black;"></a-entity>
+                  line="start: 0 0 -2; end: 0 0 -30; color: black;"></a-entity>
         <a-entity rotation="-12 -30 0"
-                  line="start: 0 0 0; end: 0 0 -30; color: black;"></a-entity>
+                  line="start: 0 0 -2; end: 0 0 -30; color: black;"></a-entity>
         <a-entity rotation="20 30 0"
-                  line="start: 0 0 0; end: 0 0 -30; color: black;"></a-entity>
+                  line="start: 0 0 -2; end: 0 0 -30; color: black;"></a-entity>
         <a-entity rotation="20 -30 0"
-                  line="start: 0 0 0; end: 0 0 -30; color: black;"></a-entity>
+                  line="start: 0 0 -2; end: 0 0 -30; color: black;"></a-entity>
         <a-entity rotation="60 55 0"
-                  line="start: 0 0 0; end: 0 0 -30; color: black;"></a-entity>
+                  line="start: 0 0 -2; end: 0 0 -30; color: black;"></a-entity>
         <a-entity rotation="60 -55 0"
-                  line="start: 0 0 0; end: 0 0 -30; color: black;"></a-entity>
+                  line="start: 0 0 -2; end: 0 0 -30; color: black;"></a-entity>
         <a-clicker></a-clicker>
-      </a-camera>
-      <a-entity position="0 0.1 0" rotation="-90 0 0">
-        <a-circle color="red" scale="0.5 0.5 0.5"></a-circle>
-        <a-ring color="yellow"
-                radius-inner="0.5" radius-outer="1.0"></a-ring>
-        <a-ring color="green"
-                radius-inner="1.0" radius-outer="10"></a-ring>
-        <a-ring color="blue"
-                radius-inner="10" radius-outer="20"></a-ring>
-        <a-entity rotation="0 0 -30"
-                line="start: 0 0 0; end: 0 100 0; color: white;"></a-entity>
-        <a-entity rotation="0 0 30"
-                line="start: 0 0 0; end: 0 100 0; color: white;"></a-entity>
-        <a-entity rotation="0 0 -55"
-                line="start: 0 0 0; end: 0 100 0; color: white;"></a-entity>
-        <a-entity rotation="0 0 55"
-                line="start: 0 0 0; end: 0 100 0; color: white;"></a-entity>
-        <a-entity rotation="0 0 -77"
-                line="start: 0 0 0; end: 0 100 0; color: white;"></a-entity>
-        <a-entity rotation="0 0 77"
-                line="start: 0 0 0; end: 0 100 0; color: white;"></a-entity>
-        <a-entity rotation="0 0 -102"
-                  line="start: 0 0 0; end: 0 100 0; color: black;"></a-entity>
-        <a-entity rotation="0 0 102"
-                line="start: 0 0 0; end: 0 100 0; color: black;"></a-entity>
       </a-entity>
       <a-entity position="0 2.5 5" scale="1.5 1.5 1.5">
         <a-hover-link href="..\index.html" image="#toplevelIndex"
