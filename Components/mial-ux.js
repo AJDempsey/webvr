@@ -115,7 +115,6 @@ AFRAME.registerComponent("mike-alger-ux-zones",{
       z = zCoords[i];
       var posEntity = document.createElement("a-entity");
       rotation["z"] = -z;
-      console.log(rotation);
       posEntity.setAttribute("line", "start: 0 0 0; end: 0 100 0; color: black;");
       posEntity.setAttribute("rotation", Object.assign({}, rotation));
       var negEntity = document.createElement("a-entity");
